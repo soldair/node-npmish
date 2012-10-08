@@ -108,13 +108,24 @@ module.exports = function(config){
 
   };
 
+
+  var ready = false;
+  var readyWrap = function(cb){
+    return function(req,res){
+      if(ready) return cb(req,res);
+      app.once('ready',function(){
+        cb(req,res);
+      });
+    }
+  };
+
   //
   // bind all routes
   //
 
-  app.route("/:tar.tgz",serveTarRoute).methods('GET');
-  app.route('/:module/:explicitversion',serveModuleJson).methods('GET');
-  app.route('/:module',serveModuleJson).methods('GET');
+  app.route("/:tar.tgz",readyWrap(serveTarRoute)).methods('GET');
+  app.route('/:module/:explicitversion',readyWrap(serveModuleJson)).methods('GET');
+  app.route('/:module',readyWrap(serveModuleJson)).methods('GET');
 
   //
   // TODO: add support for publish.
@@ -134,7 +145,10 @@ module.exports = function(config){
   // build missing tars.
   //
 
-  repo.syncTars(config.packagepath,config.tarpath);
+  repo.syncTars(config.packagepath,config.tarpath,function(){
+    ready = true;
+    app.emit('ready');
+  });
 
   return app
 }
