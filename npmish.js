@@ -2,7 +2,7 @@ var tako = require('tako')
   , request = require('request')
   , path = require('path')
   , url = require('url')
-  , repo = require(__dirname+'/lib/repo.js')
+  , repo = require('./lib/repo.js')
   , fs = require('fs')
   , app = tako()
   ;
