@@ -1,23 +1,18 @@
 {
   "name": "npmish",
   "description": "a proxy npm repository server that serves local tars and packs local repos when they are requested.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Ryan Day <soldair@gmail.com>",
   "homepage": "http://github.com/soldair/node-npmish",
   "dependencies": {
     "walkdir": "0.0.x",
     "semver": "1.0.x",
     "tar": "~0.1.13",
-    "bouncy": "~1.3.1",
-    "tako": "0.3.x",
     "request": "~2.9.202",
-    "ini": "~1.1.0"
+    "tako": "~0.3.0"
   },
   "scripts": {
-    "test": "./node_modules/tap/bin/tap.js ./test/"
-  },
-  "devDependencies": {
-    "tap": "*"
+    "test": "tap ./test/*"
   },
   "main": "npmish.js",
   "repository": {
@@ -26,5 +21,8 @@
   },
   "engines": {
     "node": ">=0.6.0"
+  },
+  "devDependencies": {
+    "tap": "~0.4.1"
   }
 }
