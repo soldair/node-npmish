@@ -1,7 +1,7 @@
 {
   "name": "npmish",
   "description": "a proxy npm repository server that serves local tars and packs local repos when they are requested.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Ryan Day <soldair@gmail.com>",
   "homepage": "http://github.com/soldair/node-npmish",
   "dependencies": {
